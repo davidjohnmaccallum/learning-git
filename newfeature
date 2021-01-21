@@ -1,0 +1,15 @@
+#set -v
+set -e
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: newfeature [branch-name]"
+    exit 2
+fi
+
+branchName=$1
+
+git checkout develop
+git pull
+git branch $branchName
+git checkout $branchName
+git push -u origin $branchName
